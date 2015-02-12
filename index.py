@@ -1,6 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 import re
+import soupselect
 from BeautifulSoup import BeautifulSoup as Soup
 from soupselect import select
 import urllib2

@@ -6,22 +6,38 @@ from bs4 import BeautifulSoup
 from soupselect import select
 import urllib2
 
-class Config(object):
-    DEBUG = True
-    TESTING = True
-    PROPAGATE_EXCEPTIONS = True
+# class Config(object):
+#     DEBUG = True
+#     TESTING = True
+#     PROPAGATE_EXCEPTIONS = True
 
-app = Flask(__name__)
+# app = Flask(__name__)
 
-app.config.from_object('Config')
+# app.config.from_object('Config')
 
-@app.route('/')
-def index():
-    response = urllib2.urlopen('http://www.tukebusz.hu/menetrend/3/naptipus/munkanap/megallo1/103')
-    html = response.read()
+# @app.route('/')
+# def index():
+#     response = urllib2.urlopen('http://www.tukebusz.hu/menetrend/3/naptipus/munkanap/megallo1/103')
+#     html = response.read()
 
-    def no_html(strin):
-    	return re.sub('<[^<]+?>', '', strin)
+#     def no_html(strin):
+#     	return re.sub('<[^<]+?>', '', strin)
 
-    soup = Soup(html)
-    return no_html(str(select(soup, '.menetrend_varhato_idopontok')))
+#     soup = Soup(html)
+#     return no_html(str(select(soup, '.menetrend_varhato_idopontok')))
+
+
+def index(environ, start_response):
+	response = urllib2.urlopen('http://www.tukebusz.hu/menetrend/3/naptipus/munkanap/megallo1/103')
+	html = response.read()
+
+	def no_html(strin):
+		return re.sub('<[^<]+?>', '', strin)
+
+	soup = BeautifulSoup(html)
+	data = no_html(str(select(soup, '.menetrend_varhato_idopontok')))
+	start_response("200 OK", [
+	    ("Content-Type", "text/html; charset=utf-8"),
+	    ("Content-Length", str(len(data)))
+	])
+	return iter([data])

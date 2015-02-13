@@ -6,7 +6,14 @@ from bs4 import BeautifulSoup
 from soupselect import select
 import urllib2
 
+class Config(object):
+    DEBUG = True
+    TESTING = True
+    PROPAGATE_EXCEPTIONS = True
+
 app = Flask(__name__)
+
+app.config.from_object('Config')
 
 @app.route('/')
 def index():

@@ -2,7 +2,7 @@ import os
 from flask import Flask
 import re
 import soupselect
-from BeautifulSoup import BeautifulSoup as Soup
+from bs4 import BeautifulSoup
 from soupselect import select
 import urllib2
 

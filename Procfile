@@ -1,1 +1,1 @@
-web: gunicorn index:app --log-file -
+web: gunicorn harmasbusz.wsgi --log-file -

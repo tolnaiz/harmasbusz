@@ -7,5 +7,6 @@ urlpatterns = patterns('',
     # url(r'^$', 'harmasbusz.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
 
-    url(r'^$', 'harmasbusz.views.index', name='index')
+    url(r'^$', 'harmasbusz.views.index', name='index'),
+    url(r'^update$', 'harmasbusz.views.update', name='index')
 )

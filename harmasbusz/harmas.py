@@ -29,7 +29,7 @@ class Harmas:
 		response = urllib2.urlopen(menetrend_url, data)
 		for x in response.read().split("\n"):
 			sor = x.split("|")
-			if sor[0] == '860':
+			if sor[6].strip() == '3':
 				kov_p = int(float(sor[3]))
 				kov_m = int((float(sor[3]) - kov_p ) * 60)
 				return [kov_p,kov_m]

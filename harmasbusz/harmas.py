@@ -28,11 +28,13 @@ class Harmas:
 		data = urllib.urlencode({'id' : 'online_erkezes|27907'})
 		response = urllib2.urlopen(menetrend_url, data)
 		for x in response.read().split("\n"):
-			sor = x.split("|")
-			if sor[6].strip() == '3':
-				kov_p = int(float(sor[3]))
-				kov_m = int((float(sor[3]) - kov_p ) * 60)
-				return [kov_p,kov_m]
+			if len(x):
+				sor = x.split("|")
+				if sor[6].strip() == '3':
+					kov_p = int(float(sor[3]))
+					kov_m = int((float(sor[3]) - kov_p ) * 60)
+					return [kov_p,kov_m]
+		return [0,0]
 
 	@staticmethod
 	def remove_html(string):

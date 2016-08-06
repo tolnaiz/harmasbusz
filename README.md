@@ -1,1 +1,1 @@
-[http://busz.tolnaiz.me/]jaratszam
+http://busz.tolnaiz.me/ [jaratszam]

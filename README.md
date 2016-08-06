@@ -1,1 +1,1 @@
-https://harmasbusz.herokuapp.com/ forráskód
+http://busz.tolnaiz.me/[jaratszam]
